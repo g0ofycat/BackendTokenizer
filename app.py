@@ -19,7 +19,7 @@ def tokenize():
         if not text:
             return jsonify({"error": "No text provided"}), 400
         
-        tokens = tokenizer.tokenize(text)
+        tokens = tokenizer.encode(text)
         return jsonify({"tokens": tokens})
     
     except Exception as e:
