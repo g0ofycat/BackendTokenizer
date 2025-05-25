@@ -18,7 +18,14 @@ def tokenize():
         text = data.get("text", "")
         if not text:
             return jsonify({"error": "No text provided"}), 400
-        
+
+        vocab = data.get("vocab")
+        lowercase = data.get("lowercase", False)
+        tokenizer_type = data.get("type", "bpe")
+        merges = data.get("merges")
+
+        tokenizer = Tokenizer(vocab, lowercase, tokenizer_type, merges)
+
         tokens = tokenizer.encode(text)
         return jsonify({"tokens": tokens})
     
