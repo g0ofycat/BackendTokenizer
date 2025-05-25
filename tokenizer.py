@@ -4,13 +4,13 @@ class Tokenizer:
 
     def __init__(self, vocab=None, lowercase=True, tokenizer_type='whitespace', merges=None):
         
-        VocabFile = "BERTVocab.txt"
+        VocabFile = "C:/Users/clint/g0ofycat/programming/python/machine_learning/Concepts/BERTVocab.txt"
         with open(VocabFile, "r", encoding="utf-8") as f:
             tokens = f.read().splitlines()
             vocab = {token: idx for idx, token in enumerate(tokens)}
 
         if merges is None:
-            merges_path = "merges.txt"
+            merges_path = "C:/Users/clint/g0ofycat/programming/python/machine_learning/Concepts/merges.txt"
             with open(merges_path, "r", encoding="utf-8") as f:
                 lines = f.read().splitlines()
                 merges = [tuple(line.strip().split()) for line in lines if line and not line.startswith("#")]
@@ -110,10 +110,3 @@ class Tokenizer:
             str_id = self.id_to_token.get(token_id, "[UNK]") # [UNK] is prob the seperator from BPE
             decodedtokens.append(str_id)
         return decodedtokens
-
-
-NewTokenizer = Tokenizer(None, False, 'bpe', merges=None)
-
-Encoded = NewTokenizer.encode("Supercalafragalisticexpealadocious")
-
-print(Encoded)
