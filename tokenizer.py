@@ -58,8 +58,6 @@ class Tokenizer:
         final_tokens = []
 
         for word in words:
-            if self.lowercase:
-                word = word.lower()
 
             if word.isalnum():  # Split word and add separator to end
                 tokens = list(word) + [self.bpe_seperator]
@@ -88,6 +86,9 @@ class Tokenizer:
 
     
     def tokenize(self, text): # Splits the String with BPE, Whitespace, etc.
+        if self.lowercase:
+            text = text.lower()
+
         if self.tokenizer_type == "whitespace":
             return text.split(" ")
         elif self.tokenizer_type == "char":
