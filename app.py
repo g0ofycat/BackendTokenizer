@@ -26,7 +26,7 @@ def tokenize():
 
         tokenizer = Tokenizer(vocab, lowercase, tokenizer_type, merges)
 
-        tokens = tokenizer.encode(text)
+        tokens = tokenizer.tokenize(text)
         return jsonify({"tokens": tokens})
     
     except Exception as e:
